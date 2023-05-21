@@ -149,6 +149,7 @@
 		B354DD8B2A19B3BA00E49D36 /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				B37774062A1A790A00B2FA79 /* Data */,
 				B354DD8C2A19B3C400E49D36 /* UserList */,
 			);
 			path = Users;
@@ -157,10 +158,9 @@
 		B354DD8C2A19B3C400E49D36 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
-				B37773FF2A1A599E00B2FA79 /* cells */,
+				B37774102A1A977C00B2FA79 /* Model */,
 				B354DD8D2A19B3FE00E49D36 /* ViewModel */,
-				B354DD8E2A19B46200E49D36 /* UserListViewController.swift */,
-				B354DD8F2A19B46200E49D36 /* UserListViewController.xib */,
+				B377740F2A1A975600B2FA79 /* View */,
 			);
 			path = UserList;
 			sourceTree = "<group>";
@@ -189,6 +189,41 @@
 				B37774012A1A59C000B2FA79 /* UserTableViewCell.xib */,
 			);
 			path = cells;
+			sourceTree = "<group>";
+		};
+		B37774062A1A790A00B2FA79 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B37774092A1A8E6000B2FA79 /* Repository */,
+				B37774072A1A794A00B2FA79 /* CoreDataManager.swift */,
+				B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		B37774092A1A8E6000B2FA79 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		B377740F2A1A975600B2FA79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B37773FF2A1A599E00B2FA79 /* cells */,
+				B354DD8E2A19B46200E49D36 /* UserListViewController.swift */,
+				B354DD8F2A19B46200E49D36 /* UserListViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B37774102A1A977C00B2FA79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B37774112A1A97DD00B2FA79 /* APIUser.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

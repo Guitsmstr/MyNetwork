@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserListViewController" customModule="MyNetwork" customModuleProvider="target">
             <connections>
+                <outlet property="emptyListMessage" destination="A1s-3T-dnF" id="oGy-L5-Qat"/>
                 <outlet property="headerView" destination="QVU-7Q-b4c" id="9ds-ir-yMa"/>
                 <outlet property="searchUserTextField" destination="K0o-sW-one" id="nGG-K9-q9w"/>
                 <outlet property="searchView" destination="IYx-97-E15" id="CXy-WE-fX3"/>
@@ -51,7 +52,7 @@
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0o-sW-one">
                             <rect key="frame" x="20" y="45.666666666666657" width="353" height="18.666666666666671"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,18 +69,39 @@
                     <rect key="frame" x="0.0" y="199" width="393" height="653"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A1s-3T-dnF">
+                    <rect key="frame" x="20" y="366" width="353" height="120"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List is empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Brf-nV-wDX">
+                            <rect key="frame" x="128" y="49.666666666666686" width="97" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Brf-nV-wDX" firstAttribute="centerY" secondItem="A1s-3T-dnF" secondAttribute="centerY" id="54K-5h-4Os"/>
+                        <constraint firstItem="Brf-nV-wDX" firstAttribute="centerX" secondItem="A1s-3T-dnF" secondAttribute="centerX" id="GMu-Xy-2zN"/>
+                        <constraint firstAttribute="height" constant="120" id="Q3K-QT-HEj"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Yka-eY-RUA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="1Ug-Sw-M9k"/>
                 <constraint firstItem="Yka-eY-RUA" firstAttribute="top" secondItem="IYx-97-E15" secondAttribute="bottom" id="1bZ-rh-5Dv"/>
+                <constraint firstItem="A1s-3T-dnF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="2io-Xb-p5P"/>
+                <constraint firstItem="A1s-3T-dnF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="EXX-et-1SL"/>
+                <constraint firstItem="A1s-3T-dnF" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="McU-Ts-4FH"/>
                 <constraint firstAttribute="bottom" secondItem="Yka-eY-RUA" secondAttribute="bottom" id="Ubh-qn-VJO"/>
                 <constraint firstItem="IYx-97-E15" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W5f-3i-62J"/>
                 <constraint firstItem="QVU-7Q-b4c" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="WrR-lM-AM4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="QVU-7Q-b4c" secondAttribute="bottom" constant="-60" id="WrY-bR-G0b"/>
                 <constraint firstItem="QVU-7Q-b4c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ZQ3-C2-0ZD"/>
                 <constraint firstItem="QVU-7Q-b4c" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ap6-0H-cDh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="A1s-3T-dnF" secondAttribute="trailing" constant="20" id="h3H-wP-BAq"/>
                 <constraint firstItem="IYx-97-E15" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="l56-NR-OW7"/>
                 <constraint firstItem="IYx-97-E15" firstAttribute="top" secondItem="QVU-7Q-b4c" secondAttribute="bottom" id="onb-qr-cQF"/>
                 <constraint firstAttribute="trailing" secondItem="Yka-eY-RUA" secondAttribute="trailing" id="t7h-ZS-Gvm"/>
@@ -91,6 +113,9 @@
         <namedColor name="main_green">
             <color red="0.17254901960784313" green="0.40784313725490196" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

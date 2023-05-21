@@ -13,6 +13,7 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var searchUserTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyListMessage: UIView!
     
     var viewModel: UserListViewModel!
     var users: [UserDisplayModel] = []
@@ -36,8 +37,14 @@ class UserListViewController: UIViewController {
             .sink { [weak self] users in
                 self?.users = users
                 self?.tableView.reloadData()
+                self?.updateEmptyListMessage()
+                
             }
             .store(in: &cancellables)
+    }
+    
+    func updateEmptyListMessage(){
+        emptyListMessage.isHidden = users.isEmpty ? false : true
     }
 }
 
@@ -57,5 +64,10 @@ extension UserListViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let searchText = textField.text ?? ""
         viewModel.filterUsers(by: searchText)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

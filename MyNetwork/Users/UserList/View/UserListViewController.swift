@@ -23,6 +23,7 @@ class UserListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "UserTableViewCell", bundle: nil), forCellReuseIdentifier: "UserTableViewCell")
+        searchUserTextField.delegate = self
 
         headerView.addShadow()
         searchUserTextField.setBottomBorder(borderColor: UIColor(named: "main_green"))
@@ -49,5 +50,12 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
         cell.setUp(user: users[indexPath.row])
         return cell
+    }
+}
+
+extension UserListViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        let searchText = textField.text ?? ""
+        viewModel.filterUsers(by: searchText)
     }
 }

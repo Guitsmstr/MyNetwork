@@ -10,6 +10,7 @@ import Combine
 
 protocol UserRepositoryProtocol {
     func getUsers() -> AnyPublisher<[UserDisplayModel], AppError>
+    func filterUsers(by searchText: String) ->AnyPublisher<[UserDisplayModel], AppError>
 }
 
 enum AppError: Error {
@@ -51,6 +52,14 @@ class UserRepository: UserRepositoryProtocol {
                             users.map(UserDisplayModel.init)
                         }.eraseToAnyPublisher()
                 }
+            }.eraseToAnyPublisher()
+    }
+    
+    func filterUsers(by searchText: String) -> AnyPublisher<[UserDisplayModel], AppError> {
+        return coreDataManager.fetchUsers(by: searchText)
+            .mapError{AppError.coreData($0)}
+            .map{filteredUsers in
+                filteredUsers.map(UserDisplayModel.init)
             }.eraseToAnyPublisher()
     }
     

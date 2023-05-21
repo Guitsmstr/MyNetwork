@@ -41,7 +41,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
             Future { promise in
                 let fetchRequest: NSFetchRequest<MNUser> = MNUser.fetchRequest()
                 if let searchText = searchText, !searchText.isEmpty {
-                    fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+                    fetchRequest.predicate = NSPredicate(format: "name BEGINSWITH[cd] %@", searchText)
                 }
                 do{
                     let users = try self.context.fetch(fetchRequest)

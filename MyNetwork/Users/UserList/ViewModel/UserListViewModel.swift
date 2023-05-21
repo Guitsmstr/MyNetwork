@@ -35,9 +35,22 @@ class UserListViewModel {
 
     }
 
-    func saveUsers() {
-        // save users to coredata
+    func filterUsers(by searchText: String) {
+        userRepository.filterUsers(by: searchText)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error fetching users: \(error)")
+                case .finished:
+                    print("Finished fetching users")
+                }
+            } receiveValue: { users in
+                self.users = users
+            }
+            .store(in: &cancellables)
     }
+
 
 
 }

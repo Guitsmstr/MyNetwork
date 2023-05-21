@@ -13,6 +13,9 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    
+    var user: UserDisplayModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         cardView.addShadow()
@@ -23,6 +26,13 @@ class UserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setUp(user: UserDisplayModel){
+        userNameLabel.text = user.name
+        phoneLabel.text = user.phone
+        emailLabel.text = user.email
+        self.user = user
     }
     
     @IBAction func didTapSeePosts(_ sender: Any) {

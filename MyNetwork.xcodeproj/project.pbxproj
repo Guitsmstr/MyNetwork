@@ -28,7 +28,9 @@
 		B377740B2A1A8EFD00B2FA79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */; };
 		B377740E2A1A968400B2FA79 /* UserDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */; };
 		B37774122A1A97DD00B2FA79 /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774112A1A97DD00B2FA79 /* APIUser.swift */; };
+		B377741D2A1AA42C00B2FA79 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377741C2A1AA42C00B2FA79 /* UserRepository.swift */; };
 		B37774202A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */; };
+		B37774222A1ABA9F00B2FA79 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,9 @@
 		B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayModel.swift; sourceTree = "<group>"; };
 		B37774112A1A97DD00B2FA79 /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
+		B377741C2A1AA42C00B2FA79 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerBuilder.swift; sourceTree = "<group>"; };
+		B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,7 @@
 		B354DD8C2A19B3C400E49D36 /* UserList */ = {
 			isa = PBXGroup;
 			children = (
+				B377741E2A1AB36A00B2FA79 /* builder */,
 				B37774102A1A977C00B2FA79 /* Model */,
 				B354DD8D2A19B3FE00E49D36 /* ViewModel */,
 				B377740F2A1A975600B2FA79 /* View */,
@@ -189,6 +194,7 @@
 			children = (
 				B354DD932A19CFCA00E49D36 /* UIViewExtensions.swift */,
 				B354DD972A19D95000E49D36 /* UITextFieldExtension.swift */,
+				B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -215,6 +221,7 @@
 		B37774092A1A8E6000B2FA79 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				B377741C2A1AA42C00B2FA79 /* UserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -388,6 +395,8 @@
 				B37774052A1A61F400B2FA79 /* UserListViewModel.swift in Sources */,
 				B37774022A1A59C000B2FA79 /* UserTableViewCell.swift in Sources */,
 				B354DD632A19A26900E49D36 /* MyNetwork.xcdatamodeld in Sources */,
+				B377741D2A1AA42C00B2FA79 /* UserRepository.swift in Sources */,
+				B37774222A1ABA9F00B2FA79 /* APIEndpoints.swift in Sources */,
 				B354DD942A19CFCA00E49D36 /* UIViewExtensions.swift in Sources */,
 				B37774082A1A794A00B2FA79 /* CoreDataManager.swift in Sources */,
 				B37774202A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift in Sources */,

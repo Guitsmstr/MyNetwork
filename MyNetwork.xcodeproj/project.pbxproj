@@ -28,6 +28,7 @@
 		B377740B2A1A8EFD00B2FA79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */; };
 		B377740E2A1A968400B2FA79 /* UserDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */; };
 		B37774122A1A97DD00B2FA79 /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774112A1A97DD00B2FA79 /* APIUser.swift */; };
+		B37774202A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayModel.swift; sourceTree = "<group>"; };
 		B37774112A1A97DD00B2FA79 /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
+		B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,6 +237,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		B377741E2A1AB36A00B2FA79 /* builder */ = {
+			isa = PBXGroup;
+			children = (
+				B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */,
+			);
+			path = builder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -380,6 +390,7 @@
 				B354DD632A19A26900E49D36 /* MyNetwork.xcdatamodeld in Sources */,
 				B354DD942A19CFCA00E49D36 /* UIViewExtensions.swift in Sources */,
 				B37774082A1A794A00B2FA79 /* CoreDataManager.swift in Sources */,
+				B37774202A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift in Sources */,
 				B354DD5B2A19A26900E49D36 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

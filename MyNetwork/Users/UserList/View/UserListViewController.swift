@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class UserListViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
@@ -14,6 +15,8 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var viewModel: UserListViewModel!
+    var users: [UserDisplayModel] = []
+    var cancellables = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +26,28 @@ class UserListViewController: UIViewController {
 
         headerView.addShadow()
         searchUserTextField.setBottomBorder(borderColor: UIColor(named: "main_green"))
+        bind()
+        viewModel.fetchUsers()
+    }
+    
+    func bind(){
+        viewModel.$users
+            .sink { [weak self] users in
+                self?.users = users
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
     }
 }
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10 // TODO: Replace with real data
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
+        cell.setUp(user: users[indexPath.row])
         return cell
     }
 }

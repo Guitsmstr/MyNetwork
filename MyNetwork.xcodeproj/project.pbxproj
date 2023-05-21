@@ -26,6 +26,7 @@
 		B37774052A1A61F400B2FA79 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774042A1A61F400B2FA79 /* UserListViewModel.swift */; };
 		B37774082A1A794A00B2FA79 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774072A1A794A00B2FA79 /* CoreDataManager.swift */; };
 		B377740B2A1A8EFD00B2FA79 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */; };
+		B377740E2A1A968400B2FA79 /* UserDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */; };
 		B37774122A1A97DD00B2FA79 /* APIUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774112A1A97DD00B2FA79 /* APIUser.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		B37774042A1A61F400B2FA79 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		B37774072A1A794A00B2FA79 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDisplayModel.swift; sourceTree = "<group>"; };
 		B37774112A1A97DD00B2FA79 /* APIUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				B37774042A1A61F400B2FA79 /* UserListViewModel.swift */,
+				B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				B37774122A1A97DD00B2FA79 /* APIUser.swift in Sources */,
 				B354DD5D2A19A26900E49D36 /* ViewController.swift in Sources */,
 				B354DD982A19D95000E49D36 /* UITextFieldExtension.swift in Sources */,
+				B377740E2A1A968400B2FA79 /* UserDisplayModel.swift in Sources */,
 				B354DD592A19A26900E49D36 /* AppDelegate.swift in Sources */,
 				B377740B2A1A8EFD00B2FA79 /* NetworkManager.swift in Sources */,
 				B37774052A1A61F400B2FA79 /* UserListViewModel.swift in Sources */,

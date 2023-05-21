@@ -13,6 +13,8 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var searchUserTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
+    var viewModel: UserListViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self

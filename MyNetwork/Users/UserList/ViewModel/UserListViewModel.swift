@@ -6,15 +6,32 @@
 //
 
 import Foundation
-
+import Combine
 
 
 class UserListViewModel {
+    private let userRepository: UserRepositoryProtocol
+    private var cancellables = Set<AnyCancellable>()
     @Published var users: [UserDisplayModel] = []
+    
+    init(userRepository: UserRepositoryProtocol){
+        self.userRepository = userRepository
+    }
 
-    func fetchUsers(by searchText: String? = nil){
-        
-        // fetch users from the coreData
+    func fetchUsers(){
+        userRepository.getUsers()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print("Error fetching users: \(error)")
+                case .finished:
+                    print("Finished fetching users")
+                }
+            } receiveValue: { users in
+                self.users = users
+            }
+            .store(in: &cancellables)
 
     }
 

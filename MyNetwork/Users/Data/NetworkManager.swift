@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol NetworkingManagerProtocol {
-    func fetchUsers() -> AnyPublisher<[APIUser], Error>
+    func fetchUsers(from url: URL?) -> AnyPublisher<[APIUser], NetworkError>
 }
 
 enum NetworkError: Error {
@@ -18,10 +18,13 @@ enum NetworkError: Error {
     case networkError
 }
 
-class NetworkingManager {
+class NetworkingManager: NetworkingManagerProtocol {
     private var cancellables = Set<AnyCancellable>()
     
-    func fetchUsers(from url: URL) -> AnyPublisher<[APIUser], NetworkError> {
+    func fetchUsers(from url: URL?) -> AnyPublisher<[APIUser], NetworkError> {
+        guard let url = url else {
+            return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
+        }
         return URLSession.shared.dataTaskPublisher(for: url)
             .tryMap { output in
                 guard let response = output.response as? HTTPURLResponse, response.statusCode == 200 else {

@@ -1,0 +1,15 @@
+# Xcode
+.DS_Store
+build/
+DerivedData/
+xcuserdata/
+
+# Swift
+**/*.swiftdoc
+**/*.swiftmodule
+
+# Xcode-generated schemes
+*.xcscheme
+*.xcworkspace/xcuserdata/
+
+

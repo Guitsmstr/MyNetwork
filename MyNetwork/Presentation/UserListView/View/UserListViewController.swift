@@ -74,6 +74,7 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell") as! UserTableViewCell
+        cell.delegate = self
         cell.setUp(user: users[indexPath.row])
         return cell
     }
@@ -89,4 +90,15 @@ extension UserListViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension UserListViewController: UserTableViewCellDelegate {
+    func didTapShowPosts(by user: UserDisplayModel) {
+        let userPostsViewBuilder = UserPostsViewControllerBuilder()
+        let postsVC = userPostsViewBuilder.build(user: user)
+        guard let navigationController = self.navigationController else {return}
+        self.navigationController?.pushViewController(postsVC, animated: true)
+    }
+    
+    
 }

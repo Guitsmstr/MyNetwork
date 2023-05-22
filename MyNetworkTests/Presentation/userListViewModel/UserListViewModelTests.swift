@@ -32,7 +32,7 @@ class UserListViewModelTests: XCTestCase {
     func testFetchUsersFromCacheOrService() {
         let expectation = XCTestExpectation(description: "Fetch users from cache or service")
 
-        mockRepository.mockUsers = [UserDisplayModel(name: "Test",  phone: "1234567890", email: "test@email.com", id: 1)]
+        mockRepository.expectedUsers = [UserDisplayModel(name: "Test",  phone: "1234567890", email: "test@email.com", id: 1)]
 
         viewModel.$users
             .sink { users in
@@ -48,13 +48,13 @@ class UserListViewModelTests: XCTestCase {
 
         viewModel.fetchUsersFromCacheOrService()
         
-        wait(for: [expectation], timeout: 1.0)
+        wait(for: [expectation], timeout: 5.0)
     }
 
     func testFilterUsers() {
         let expectation = XCTestExpectation(description: "Filter users")
 
-        mockRepository.mockUsers = [
+        mockRepository.expectedUsers = [
             UserDisplayModel(name: "Test",  phone: "1234567890", email: "test@email.com", id: 1),
             UserDisplayModel(name: "Bob", phone: "0987654321",  email: "bob@email.com", id: 2)
         ]

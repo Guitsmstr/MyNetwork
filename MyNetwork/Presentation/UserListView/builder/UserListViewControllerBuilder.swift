@@ -5,16 +5,20 @@
 //  Created by Guillermo on 21/05/23.
 //
 
-import Foundation
+import UIKit
 
 struct UserListViewControllerBuilder {
-    func build()->UserListViewController{
+    func build() -> UINavigationController {
         let coreDataManager = CoreDataManager.shared
         let networkingManager = NetworkingManager()
         let repository = UserRepository(coreDataManager: coreDataManager, networkingManager: networkingManager)
         let viewModel = UserListViewModel(userRepository: repository)
         let viewController = UserListViewController()
         viewController.viewModel = viewModel
-        return viewController
+
+        let navigationController = UINavigationController(rootViewController: viewController)
+        viewController.navigationItem.hidesBackButton = true
+        navigationController.isNavigationBarHidden = true
+        return navigationController
     }
 }

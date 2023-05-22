@@ -13,6 +13,14 @@ struct UserDisplayModel {
     let email: String
     let id: Int
 
+    
+    init (name: String, phone: String, email: String, id: Int){
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.id = id
+    }
+    
     init(apiUser: APIUser) {
         self.name = apiUser.name
         self.phone = apiUser.phone

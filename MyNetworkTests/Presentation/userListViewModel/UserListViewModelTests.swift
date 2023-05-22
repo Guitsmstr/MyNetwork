@@ -79,24 +79,6 @@ class UserListViewModelTests: XCTestCase {
 
 // MARK: - Mock UserRepository
 
-//class MockUserRepository: UserRepositoryProtocol {
-//    var mockUsers = [UserDisplayModel]()
-//    
-//    func getUsersFromCacheOrService() -> AnyPublisher<[UserDisplayModel], AppError> {
-//        Just(mockUsers).setFailureType(to: AppError.self).eraseToAnyPublisher()
-//    }
-//
-//    func filterUsers(by searchText: String) -> AnyPublisher<[UserDisplayModel], AppError> {
-//        Just(mockUsers.filter { $0.name.contains(searchText) })
-//            .setFailureType(to: AppError.self)
-//            .eraseToAnyPublisher()
-//    }
-//
-//    func fetchPosts(by userID: Int) -> AnyPublisher<[UserPostDisplayModel], AppError> {
-//        // For simplicity, we don't use this method in the testing of the UserListViewModel.
-//        fatalError("Not implemented")
-//    }
-//}
 
 class MockUserRepository: UserRepositoryProtocol {
 

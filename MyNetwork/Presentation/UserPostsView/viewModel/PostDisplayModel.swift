@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PostDisplayModel {
+class UserPostDisplayModel {
     let userId: Int
     let id: Int
     let title: String

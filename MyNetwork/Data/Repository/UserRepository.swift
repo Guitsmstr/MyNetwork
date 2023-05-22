@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol UserRepositoryProtocol {
-    func getUsers() -> AnyPublisher<[UserDisplayModel], AppError>
+    func getUsersFromCacheOrService() -> AnyPublisher<[UserDisplayModel], AppError>
     func filterUsers(by searchText: String) ->AnyPublisher<[UserDisplayModel], AppError>
 }
 
@@ -30,7 +30,7 @@ class UserRepository: UserRepositoryProtocol {
     }
     
     
-    func getUsers() -> AnyPublisher<[UserDisplayModel], AppError> {
+    func getUsersFromCacheOrService() -> AnyPublisher<[UserDisplayModel], AppError> {
         return coreDataManager.fetchUsers(by: nil)
             .mapError{AppError.coreData($0)}
             .flatMap{savedUsers -> AnyPublisher<[UserDisplayModel], AppError> in

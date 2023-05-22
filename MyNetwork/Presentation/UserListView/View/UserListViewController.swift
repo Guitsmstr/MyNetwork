@@ -29,11 +29,15 @@ class UserListViewController: UIViewController {
         headerView.addShadow()
         searchUserTextField.setBottomBorder(borderColor: UIColor(named: "main_green"))
         bind()
-        viewModel.fetchUsers()
+        viewModel.fetchUsersFromCacheOrService()
     }
     
     func bind(){
-        viewModel.$users
+        let fetchedUsers = viewModel.$users
+        let didFinishFirstRequest = viewModel.$isFirstFetchCompleted
+        let loading = viewModel.$loading
+        
+        fetchedUsers
             .sink { [weak self] users in
                 self?.users = users
                 self?.tableView.reloadData()
@@ -41,10 +45,25 @@ class UserListViewController: UIViewController {
                 
             }
             .store(in: &cancellables)
+        
+        didFinishFirstRequest
+            .sink{ [weak self] didFinish in
+                self?.updateTextFieldInteraction(didFinish)
+            }.store(in: &cancellables)
+        
+        loading
+            .sink{[weak self] isLoading in
+                self?.showHideLoadingView(isLoading)
+            }.store(in: &cancellables)
+        
     }
     
     func updateEmptyListMessage(){
         emptyListMessage.isHidden = users.isEmpty ? false : true
+    }
+    
+    func updateTextFieldInteraction(_ isFirstFetchCompleted: Bool) {
+        searchUserTextField.isUserInteractionEnabled = isFirstFetchCompleted
     }
 }
 

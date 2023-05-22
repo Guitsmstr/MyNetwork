@@ -31,6 +31,9 @@
 		B377741D2A1AA42C00B2FA79 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377741C2A1AA42C00B2FA79 /* UserRepository.swift */; };
 		B37774202A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */; };
 		B37774222A1ABA9F00B2FA79 /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */; };
+		B37774252A1ADCEE00B2FA79 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774242A1ADCEE00B2FA79 /* UIViewControllerExtension.swift */; };
+		B37774292A1B08A100B2FA79 /* APIUserPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37774282A1B08A100B2FA79 /* APIUserPost.swift */; };
+		B377742B2A1B095500B2FA79 /* PostDisplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B377742A2A1B095500B2FA79 /* PostDisplayModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		B377741C2A1AA42C00B2FA79 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewControllerBuilder.swift; sourceTree = "<group>"; };
 		B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
+		B37774242A1ADCEE00B2FA79 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		B37774282A1B08A100B2FA79 /* APIUserPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIUserPost.swift; sourceTree = "<group>"; };
+		B377742A2A1B095500B2FA79 /* PostDisplayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDisplayModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +137,8 @@
 			children = (
 				B354DD952A19D71400E49D36 /* Main.storyboard */,
 				B354DD922A19CF3900E49D36 /* Utilities */,
-				B354DD8B2A19B3BA00E49D36 /* Users */,
+				B37774062A1A790A00B2FA79 /* Data */,
+				B37774262A1AFD3800B2FA79 /* Presentation */,
 				B354DD582A19A26900E49D36 /* AppDelegate.swift */,
 				B354DD5A2A19A26900E49D36 /* SceneDelegate.swift */,
 				B354DD5C2A19A26900E49D36 /* ViewController.swift */,
@@ -160,16 +167,7 @@
 			path = MyNetworkUITests;
 			sourceTree = "<group>";
 		};
-		B354DD8B2A19B3BA00E49D36 /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				B37774062A1A790A00B2FA79 /* Data */,
-				B354DD8C2A19B3C400E49D36 /* UserList */,
-			);
-			path = Users;
-			sourceTree = "<group>";
-		};
-		B354DD8C2A19B3C400E49D36 /* UserList */ = {
+		B354DD8C2A19B3C400E49D36 /* UserListView */ = {
 			isa = PBXGroup;
 			children = (
 				B377741E2A1AB36A00B2FA79 /* builder */,
@@ -177,7 +175,7 @@
 				B354DD8D2A19B3FE00E49D36 /* ViewModel */,
 				B377740F2A1A975600B2FA79 /* View */,
 			);
-			path = UserList;
+			path = UserListView;
 			sourceTree = "<group>";
 		};
 		B354DD8D2A19B3FE00E49D36 /* ViewModel */ = {
@@ -185,6 +183,7 @@
 			children = (
 				B37774042A1A61F400B2FA79 /* UserListViewModel.swift */,
 				B377740D2A1A968400B2FA79 /* UserDisplayModel.swift */,
+				B377742A2A1B095500B2FA79 /* PostDisplayModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -192,8 +191,7 @@
 		B354DD922A19CF3900E49D36 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				B354DD932A19CFCA00E49D36 /* UIViewExtensions.swift */,
-				B354DD972A19D95000E49D36 /* UITextFieldExtension.swift */,
+				B37774232A1ADCDD00B2FA79 /* extensions */,
 				B37774212A1ABA9F00B2FA79 /* APIEndpoints.swift */,
 			);
 			path = Utilities;
@@ -211,6 +209,7 @@
 		B37774062A1A790A00B2FA79 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				B37774272A1B085900B2FA79 /* Model */,
 				B37774092A1A8E6000B2FA79 /* Repository */,
 				B37774072A1A794A00B2FA79 /* CoreDataManager.swift */,
 				B377740A2A1A8EFD00B2FA79 /* NetworkManager.swift */,
@@ -239,7 +238,6 @@
 		B37774102A1A977C00B2FA79 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B37774112A1A97DD00B2FA79 /* APIUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +248,33 @@
 				B377741F2A1AB37F00B2FA79 /* UserListViewControllerBuilder.swift */,
 			);
 			path = builder;
+			sourceTree = "<group>";
+		};
+		B37774232A1ADCDD00B2FA79 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B354DD932A19CFCA00E49D36 /* UIViewExtensions.swift */,
+				B354DD972A19D95000E49D36 /* UITextFieldExtension.swift */,
+				B37774242A1ADCEE00B2FA79 /* UIViewControllerExtension.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
+		B37774262A1AFD3800B2FA79 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				B354DD8C2A19B3C400E49D36 /* UserListView */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		B37774272A1B085900B2FA79 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B37774112A1A97DD00B2FA79 /* APIUser.swift */,
+				B37774282A1B08A100B2FA79 /* APIUserPost.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -389,12 +414,15 @@
 				B37774122A1A97DD00B2FA79 /* APIUser.swift in Sources */,
 				B354DD5D2A19A26900E49D36 /* ViewController.swift in Sources */,
 				B354DD982A19D95000E49D36 /* UITextFieldExtension.swift in Sources */,
+				B37774252A1ADCEE00B2FA79 /* UIViewControllerExtension.swift in Sources */,
 				B377740E2A1A968400B2FA79 /* UserDisplayModel.swift in Sources */,
+				B377742B2A1B095500B2FA79 /* PostDisplayModel.swift in Sources */,
 				B354DD592A19A26900E49D36 /* AppDelegate.swift in Sources */,
 				B377740B2A1A8EFD00B2FA79 /* NetworkManager.swift in Sources */,
 				B37774052A1A61F400B2FA79 /* UserListViewModel.swift in Sources */,
 				B37774022A1A59C000B2FA79 /* UserTableViewCell.swift in Sources */,
 				B354DD632A19A26900E49D36 /* MyNetwork.xcdatamodeld in Sources */,
+				B37774292A1B08A100B2FA79 /* APIUserPost.swift in Sources */,
 				B377741D2A1AA42C00B2FA79 /* UserRepository.swift in Sources */,
 				B37774222A1ABA9F00B2FA79 /* APIEndpoints.swift in Sources */,
 				B354DD942A19CFCA00E49D36 /* UIViewExtensions.swift in Sources */,

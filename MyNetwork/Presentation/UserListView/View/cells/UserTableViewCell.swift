@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol UserTableViewCellDelegate: AnyObject {
+    func didTapShowPosts(by user: UserDisplayModel)
+}
+
 class UserTableViewCell: UITableViewCell {
 
     @IBOutlet weak var userNameLabel: UILabel!
@@ -15,6 +19,7 @@ class UserTableViewCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     
     var user: UserDisplayModel?
+    weak var delegate: UserTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,5 +41,7 @@ class UserTableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapSeePosts(_ sender: Any) {
+        guard let user = user else {return}
+        delegate?.didTapShowPosts(by: user)
     }
 }

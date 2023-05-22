@@ -12,5 +12,6 @@ struct APIEndpoints {
     
     struct Users {
         static var fetch: String { return baseURL + "users" }
+        static var getPosts: String {return baseURL + "posts?userId="}
     }
 }

@@ -12,7 +12,6 @@ import CoreData
 protocol CoreDataManagerProtocol {
     func fetchUsers(by searchText: String?) -> AnyPublisher<[MNUser], Error>
     var context: NSManagedObjectContext { get }
-    func saveContext() throws
     func save(users: [APIUser]) -> AnyPublisher<[MNUser], Error>
 }
 
@@ -63,11 +62,6 @@ final class CoreDataManager: CoreDataManagerProtocol {
         
     }
     
-    func saveContext() throws {
-        if context.hasChanges {
-            try context.save()
-        }
-    }
     
     func save(users: [APIUser]) -> AnyPublisher<[MNUser], Error> {
         Deferred {

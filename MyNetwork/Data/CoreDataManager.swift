@@ -53,12 +53,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
         }.eraseToAnyPublisher()
         
         
-//        let fetchRequest: NSFetchRequest<MNUser> = MNUser.fetchRequest()
-//        if let searchText = searchText, !searchText.isEmpty {
-//            fetchRequest.predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchText)
-//        }
-//        let users = try context.fetch(fetchRequest)
-//        return users
+
         
     }
     

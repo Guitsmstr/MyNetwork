@@ -11,7 +11,7 @@ import Combine
 protocol UserRepositoryProtocol {
     func getUsersFromCacheOrService() -> AnyPublisher<[UserDisplayModel], AppError>
     func filterUsers(by searchText: String) ->AnyPublisher<[UserDisplayModel], AppError>
-    func fetchPosts(by userID: String) -> AnyPublisher<[PostDisplayModel], AppError>
+    func fetchPosts(by userID: Int) -> AnyPublisher<[UserPostDisplayModel], AppError>
 }
 
 enum AppError: Error {
@@ -68,12 +68,12 @@ class UserRepository: UserRepositoryProtocol {
             .eraseToAnyPublisher()
     }
     
-    func fetchPosts(by userID: String)-> AnyPublisher<[PostDisplayModel], AppError>{
-        let url = URL(string: APIEndpoints.Users.getPosts + userID)
+    func fetchPosts(by userID: Int) -> AnyPublisher<[UserPostDisplayModel], AppError>{
+        let url = URL(string: APIEndpoints.Users.getPosts + String(userID))
         return networkingManager.getRequest(from: url, decodingType: [APIUserPost].self)
             .mapError{AppError.network($0)}
             .map{ posts in
-                posts.map(PostDisplayModel.init)
+                return posts.map(UserPostDisplayModel.init)
             }
             .eraseToAnyPublisher()
     }

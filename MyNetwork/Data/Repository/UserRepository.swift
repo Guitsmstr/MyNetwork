@@ -11,6 +11,7 @@ import Combine
 protocol UserRepositoryProtocol {
     func getUsersFromCacheOrService() -> AnyPublisher<[UserDisplayModel], AppError>
     func filterUsers(by searchText: String) ->AnyPublisher<[UserDisplayModel], AppError>
+    func fetchPosts(by userID: String) -> AnyPublisher<[PostDisplayModel], AppError>
 }
 
 enum AppError: Error {
@@ -35,16 +36,7 @@ class UserRepository: UserRepositoryProtocol {
             .mapError{AppError.coreData($0)}
             .flatMap{savedUsers -> AnyPublisher<[UserDisplayModel], AppError> in
                 if savedUsers.isEmpty {
-                    return self.networkingManager.fetchUsers(from: URL(string: APIEndpoints.Users.fetch))
-                        .mapError{AppError.network($0)}
-                        .flatMap { users in
-                            self.coreDataManager.save(users: users)
-                                .mapError{AppError.coreData($0)}
-                                .map{savedUsers in
-                                    savedUsers.map(UserDisplayModel.init)
-                                }.eraseToAnyPublisher()
-                        }
-                        .eraseToAnyPublisher()
+                    return self.fetchUsers()
                 }else {
                     return Just(savedUsers)
                         .setFailureType(to: AppError.self)
@@ -61,6 +53,29 @@ class UserRepository: UserRepositoryProtocol {
             .map{filteredUsers in
                 filteredUsers.map(UserDisplayModel.init)
             }.eraseToAnyPublisher()
+    }
+    
+    func fetchUsers() -> AnyPublisher<[UserDisplayModel], AppError> {
+        return networkingManager.getRequest(from: URL(string: APIEndpoints.Users.fetch), decodingType: [APIUser].self)
+            .mapError{AppError.network($0)}
+            .flatMap { users in
+                self.coreDataManager.save(users: users)
+                    .mapError{AppError.coreData($0)}
+                    .map{ savedUsers in
+                        savedUsers.map(UserDisplayModel.init)
+                    }.eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+    }
+    
+    func fetchPosts(by userID: String)-> AnyPublisher<[PostDisplayModel], AppError>{
+        let url = URL(string: APIEndpoints.Users.getPosts + userID)
+        return networkingManager.getRequest(from: url, decodingType: [APIUserPost].self)
+            .mapError{AppError.network($0)}
+            .map{ posts in
+                posts.map(PostDisplayModel.init)
+            }
+            .eraseToAnyPublisher()
     }
     
 }

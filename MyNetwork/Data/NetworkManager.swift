@@ -9,7 +9,8 @@ import Foundation
 import Combine
 
 protocol NetworkingManagerProtocol {
-    func fetchUsers(from url: URL?) -> AnyPublisher<[APIUser], NetworkError>
+//    func fetchUsers(from url: URL?) -> AnyPublisher<[APIUser], NetworkError>
+    func getRequest<T: Decodable>(from url: URL?, decodingType: T.Type) -> AnyPublisher<T, NetworkError>
 }
 
 enum NetworkError: Error {
@@ -21,7 +22,7 @@ enum NetworkError: Error {
 class NetworkingManager: NetworkingManagerProtocol {
     private var cancellables = Set<AnyCancellable>()
     
-    func fetchUsers(from url: URL?) -> AnyPublisher<[APIUser], NetworkError> {
+    func getRequest<T: Decodable>(from url: URL?, decodingType: T.Type) -> AnyPublisher<T, NetworkError> {
         guard let url = url else {
             return Fail(error: NetworkError.urlError).eraseToAnyPublisher()
         }
@@ -32,7 +33,7 @@ class NetworkingManager: NetworkingManagerProtocol {
                 }
                 return output.data
             }
-            .decode(type: [APIUser].self, decoder: JSONDecoder())
+            .decode(type: decodingType, decoder: JSONDecoder())
             .mapError { error in
                 switch error {
                 case is URLError:
